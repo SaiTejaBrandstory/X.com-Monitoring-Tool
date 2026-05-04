@@ -1,0 +1,47 @@
+{
+    "title": "personas",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id"
+        },
+        "name": {
+            "type": "string",
+            "description": "Persona name"
+        },
+        "tone_description": {
+            "type": "string",
+            "description": "Tone description"
+        },
+        "style_rules": {
+            "type": "string",
+            "description": "JSON string of style rules and forbidden phrases"
+        },
+        "few_shot_examples": {
+            "type": "string",
+            "description": "JSON string of example posts"
+        },
+        "default_platform": {
+            "type": "string",
+            "description": "twitter or linkedin"
+        },
+        "default_max_words": {
+            "type": "integer",
+            "description": "Default max words"
+        },
+        "funnel_stages": {
+            "type": "string",
+            "description": "JSON string mapping TOFU/MOFU/BOFU to content guidance"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "name"
+    ]
+}

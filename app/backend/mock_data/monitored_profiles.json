@@ -1,0 +1,74 @@
+[
+    {
+        "category_id": 1,
+        "platform": "twitter",
+        "handle": "levelsio",
+        "display_name": "Pieter Levels",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=levelsio",
+        "profile_url": "https://twitter.com/levelsio",
+        "is_active": true
+    },
+    {
+        "category_id": 1,
+        "platform": "linkedin",
+        "handle": "hnshah",
+        "display_name": "Hiten Shah",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=hnshah",
+        "profile_url": "https://linkedin.com/in/hnshah",
+        "is_active": true
+    },
+    {
+        "category_id": 2,
+        "platform": "twitter",
+        "handle": "GrowthHackers",
+        "display_name": "Growth Hackers",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=growth",
+        "profile_url": "https://twitter.com/GrowthHackers",
+        "is_active": true
+    },
+    {
+        "category_id": 2,
+        "platform": "linkedin",
+        "handle": "sujanpatel",
+        "display_name": "Sujan Patel",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sujan",
+        "profile_url": "https://linkedin.com/in/sujanpatel",
+        "is_active": true
+    },
+    {
+        "category_id": 3,
+        "platform": "twitter",
+        "handle": "sama",
+        "display_name": "Sam Altman",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=sama",
+        "profile_url": "https://twitter.com/sama",
+        "is_active": true
+    },
+    {
+        "category_id": 3,
+        "platform": "twitter",
+        "handle": "AndrewYNg",
+        "display_name": "Andrew Ng",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=ng",
+        "profile_url": "https://twitter.com/AndrewYNg",
+        "is_active": true
+    },
+    {
+        "category_id": 4,
+        "platform": "twitter",
+        "handle": "paulg",
+        "display_name": "Paul Graham",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=pg",
+        "profile_url": "https://twitter.com/paulg",
+        "is_active": true
+    },
+    {
+        "category_id": 4,
+        "platform": "linkedin",
+        "handle": "gary-vaynerchuk",
+        "display_name": "Gary Vaynerchuk",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=gv",
+        "profile_url": "https://linkedin.com/in/gary-vaynerchuk",
+        "is_active": true
+    }
+]

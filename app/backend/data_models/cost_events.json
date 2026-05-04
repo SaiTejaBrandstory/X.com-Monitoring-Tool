@@ -1,0 +1,52 @@
+{
+    "title": "cost_events",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id"
+        },
+        "service": {
+            "type": "string",
+            "description": "Service name: llm, apify, storage"
+        },
+        "cost_center": {
+            "type": "string",
+            "description": "hook_extraction, rewrite, scrape, etc."
+        },
+        "category": {
+            "type": "string",
+            "description": "Category label"
+        },
+        "tokens_input": {
+            "type": "integer",
+            "description": "Input tokens"
+        },
+        "tokens_output": {
+            "type": "integer",
+            "description": "Output tokens"
+        },
+        "cost_usd": {
+            "type": "number",
+            "description": "Cost in USD"
+        },
+        "model_used": {
+            "type": "string",
+            "description": "Model"
+        },
+        "event_meta": {
+            "type": "string",
+            "description": "JSON metadata"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "service",
+        "cost_usd"
+    ]
+}

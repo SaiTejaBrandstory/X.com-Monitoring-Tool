@@ -1,0 +1,79 @@
+{
+    "title": "rewritten_outputs",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id"
+        },
+        "saved_post_id": {
+            "type": "integer",
+            "description": "FK to saved_posts"
+        },
+        "persona_id": {
+            "type": "integer",
+            "description": "FK to personas"
+        },
+        "original_content": {
+            "type": "string",
+            "description": "Original post content"
+        },
+        "original_hook": {
+            "type": "string",
+            "description": "Extracted hook"
+        },
+        "rewritten_content": {
+            "type": "string",
+            "description": "Rewritten content"
+        },
+        "word_count": {
+            "type": "integer",
+            "description": "Word count"
+        },
+        "char_count": {
+            "type": "integer",
+            "description": "Character count"
+        },
+        "platform_target": {
+            "type": "string",
+            "description": "Target platform"
+        },
+        "version": {
+            "type": "integer",
+            "description": "Version number"
+        },
+        "lock_hook": {
+            "type": "boolean",
+            "description": "Whether hook was locked"
+        },
+        "max_words": {
+            "type": "integer",
+            "description": "Max words used"
+        },
+        "max_chars": {
+            "type": "integer",
+            "description": "Max chars used"
+        },
+        "model_used": {
+            "type": "string",
+            "description": "Model used for rewrite"
+        },
+        "tokens_input": {
+            "type": "integer",
+            "description": "Input tokens"
+        },
+        "tokens_output": {
+            "type": "integer",
+            "description": "Output tokens"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "rewritten_content"
+    ]
+}

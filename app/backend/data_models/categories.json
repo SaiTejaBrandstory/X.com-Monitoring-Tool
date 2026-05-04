@@ -1,0 +1,30 @@
+{
+    "title": "categories",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "name": {
+            "type": "string",
+            "description": "Category name e.g. SaaS, Growth, AI"
+        },
+        "color": {
+            "type": "string",
+            "description": "Tailwind color class"
+        },
+        "refresh_interval_minutes": {
+            "type": "integer",
+            "description": "Refresh interval in minutes"
+        },
+        "is_paused": {
+            "type": "boolean",
+            "description": "Whether refresh is paused"
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ]
+}

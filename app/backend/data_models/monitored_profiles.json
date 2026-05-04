@@ -1,0 +1,43 @@
+{
+    "title": "monitored_profiles",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "category_id": {
+            "type": "integer",
+            "description": "FK to categories"
+        },
+        "platform": {
+            "type": "string",
+            "description": "twitter or linkedin"
+        },
+        "handle": {
+            "type": "string",
+            "description": "Profile handle"
+        },
+        "display_name": {
+            "type": "string",
+            "description": "Display name"
+        },
+        "avatar_url": {
+            "type": "string",
+            "description": "Avatar URL"
+        },
+        "profile_url": {
+            "type": "string",
+            "description": "Full profile URL"
+        },
+        "is_active": {
+            "type": "boolean",
+            "description": "Active status"
+        }
+    },
+    "required": [
+        "id",
+        "platform",
+        "handle"
+    ]
+}

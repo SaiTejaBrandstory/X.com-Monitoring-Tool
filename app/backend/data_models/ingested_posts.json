@@ -1,0 +1,75 @@
+{
+    "title": "ingested_posts",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "profile_id": {
+            "type": "integer",
+            "description": "FK to monitored_profiles"
+        },
+        "platform": {
+            "type": "string",
+            "description": "twitter or linkedin"
+        },
+        "author_handle": {
+            "type": "string",
+            "description": "Author handle"
+        },
+        "author_name": {
+            "type": "string",
+            "description": "Author display name"
+        },
+        "author_avatar": {
+            "type": "string",
+            "description": "Author avatar URL"
+        },
+        "content": {
+            "type": "string",
+            "description": "Post content"
+        },
+        "likes": {
+            "type": "integer",
+            "description": "Likes count"
+        },
+        "retweets": {
+            "type": "integer",
+            "description": "Retweets/reposts"
+        },
+        "replies": {
+            "type": "integer",
+            "description": "Replies count"
+        },
+        "engagement_score": {
+            "type": "number",
+            "description": "Computed engagement"
+        },
+        "virality_trend": {
+            "type": "string",
+            "description": "up, down, steady"
+        },
+        "posted_at": {
+            "type": "string",
+            "description": "ISO timestamp when posted"
+        },
+        "raw_url": {
+            "type": "string",
+            "description": "Original post URL"
+        },
+        "category_id": {
+            "type": "integer",
+            "description": "Category id for filtering"
+        },
+        "is_new": {
+            "type": "boolean",
+            "description": "New post flag"
+        }
+    },
+    "required": [
+        "id",
+        "platform",
+        "content"
+    ]
+}

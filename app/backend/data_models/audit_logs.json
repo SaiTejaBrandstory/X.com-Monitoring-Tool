@@ -1,0 +1,31 @@
+{
+    "title": "audit_logs",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id"
+        },
+        "action": {
+            "type": "string",
+            "description": "Action name"
+        },
+        "target": {
+            "type": "string",
+            "description": "Target resource"
+        },
+        "details": {
+            "type": "string",
+            "description": "JSON details"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "action"
+    ]
+}

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "SaaS",
+        "color": "bg-blue-500",
+        "refresh_interval_minutes": 15,
+        "is_paused": false
+    },
+    {
+        "name": "Growth",
+        "color": "bg-emerald-500",
+        "refresh_interval_minutes": 15,
+        "is_paused": false
+    },
+    {
+        "name": "AI",
+        "color": "bg-purple-500",
+        "refresh_interval_minutes": 5,
+        "is_paused": false
+    },
+    {
+        "name": "Founder Content",
+        "color": "bg-orange-500",
+        "refresh_interval_minutes": 30,
+        "is_paused": false
+    }
+]

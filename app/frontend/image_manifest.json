@@ -1,0 +1,48 @@
+{
+  "status": "success",
+  "results": [
+    {
+      "status": "success",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyx2qiaafla/hero-dashboard-banner.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyx2qiaafla/hero-dashboard-banner.png",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyx2qiaafla/hero-dashboard-banner.png",
+      "message": "Image generated successfully.\n\nNote: The image is on CDN and will be displayed automatically. Just describe what you created briefly, no need to mention filenames or URLs.",
+      "description": "Sleek abstract hero banner visualization of a social intelligence dashboard, flowing data streams and connected nodes representing viral posts, violet and indigo gradient background (#7C3AED to #4F46E5), subtle glow particles, modern tech aesthetic, dark mode friendly, no text",
+      "style": "minimalist",
+      "filename": "hero-dashboard-banner.png"
+    },
+    {
+      "status": "success",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxvdaaafna/persona-workspace-illustration.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxvdaaafna/persona-workspace-illustration.png",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxvdaaafna/persona-workspace-illustration.png",
+      "message": "Image generated successfully.\n\nNote: The image is on CDN and will be displayed automatically. Just describe what you created briefly, no need to mention filenames or URLs.",
+      "description": "Clean minimalist illustration of a dual-panel writing workspace with two floating document cards side by side, one showing source content and the other transformed output, connected by a subtle arrow, violet and emerald accents on white background, line art style",
+      "style": "minimalist",
+      "filename": "persona-workspace-illustration.png"
+    },
+    {
+      "status": "success",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxtfyaaflq/empty-state-feed.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxtfyaaflq/empty-state-feed.png",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxtfyaaflq/empty-state-feed.png",
+      "message": "Image generated successfully.\n\nNote: The image is on CDN and will be displayed automatically. Just describe what you created briefly, no need to mention filenames or URLs.",
+      "description": "Friendly empty state illustration showing a magnifying glass over an empty social feed card, soft purple and blue colors, cute and approachable, minimal line art on light background, conveys wait for content to arrive",
+      "style": "minimalist",
+      "filename": "empty-state-feed.png"
+    },
+    {
+      "status": "success",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxx5aaafma/cost-tracker-icon-set.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxx5aaafma/cost-tracker-icon-set.png",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/910092/2026-04-24/niyxx5aaafma/cost-tracker-icon-set.png",
+      "message": "Image generated successfully.\n\nNote: The image is on CDN and will be displayed automatically. Just describe what you created briefly, no need to mention filenames or URLs.",
+      "description": "Icon set infographic bundle showing finance and cost tracking concepts, dollar signs, pie charts, budget alerts, arrows trending up and down, violet indigo and emerald color scheme, flat design, 2x2 grid layout on transparent background",
+      "style": "minimalist",
+      "filename": "cost-tracker-icon-set.png"
+    }
+  ],
+  "success_count": 4,
+  "failed_count": 0,
+  "message": "Generated 4/4 images"
+}

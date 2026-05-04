@@ -1,0 +1,27 @@
+{
+    "title": "saved_posts",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id"
+        },
+        "post_id": {
+            "type": "integer",
+            "description": "FK to ingested_posts"
+        },
+        "notes": {
+            "type": "string",
+            "description": "User notes"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "post_id"
+    ]
+}

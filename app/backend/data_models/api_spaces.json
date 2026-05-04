@@ -1,0 +1,56 @@
+{
+    "title": "api_spaces",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "label": {
+            "type": "string",
+            "description": "Friendly label e.g. Primary Apify"
+        },
+        "provider": {
+            "type": "string",
+            "description": "Provider name, default 'apify'"
+        },
+        "api_token_encrypted": {
+            "type": "string",
+            "description": "Encrypted API token"
+        },
+        "actor_type": {
+            "type": "string",
+            "description": "Actor id e.g. twitter-scraper, linkedin-posts-scraper, or custom"
+        },
+        "platform": {
+            "type": "string",
+            "description": "Target platform: twitter, linkedin, instagram, other"
+        },
+        "proxy_group": {
+            "type": "string",
+            "description": "RESIDENTIAL / DATACENTER / none"
+        },
+        "is_active": {
+            "type": "boolean",
+            "description": "Whether this config is the active one for its platform"
+        },
+        "last_tested_at": {
+            "type": "string",
+            "description": "Last test timestamp ISO string"
+        },
+        "test_status": {
+            "type": "string",
+            "description": "Status: untested / active / inactive / failed"
+        },
+        "notes": {
+            "type": "string",
+            "description": "Optional notes"
+        }
+    },
+    "required": [
+        "id",
+        "label",
+        "platform",
+        "actor_type"
+    ]
+}

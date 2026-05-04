@@ -1,0 +1,44 @@
+# Secrets and local env
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+*.egg-info/
+.eggs/
+dist/
+*.egg
+
+# Backend local DB and logs (dev)
+**/local_dev.db
+**/logs/
+*.sqlite3
+**/*.db
+
+# Node / frontend
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vite/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/

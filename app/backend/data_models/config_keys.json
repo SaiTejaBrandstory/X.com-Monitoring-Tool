@@ -1,0 +1,39 @@
+{
+    "title": "config_keys",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User id (admin/owner)"
+        },
+        "key_name": {
+            "type": "string",
+            "description": "Key name e.g. apify_token, openai_key"
+        },
+        "encrypted_value": {
+            "type": "string",
+            "description": "Encrypted value"
+        },
+        "last_tested_at": {
+            "type": "string",
+            "description": "Last tested timestamp"
+        },
+        "is_valid": {
+            "type": "boolean",
+            "description": "Validity"
+        },
+        "updated_by": {
+            "type": "string",
+            "description": "User who updated"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "key_name"
+    ]
+}
