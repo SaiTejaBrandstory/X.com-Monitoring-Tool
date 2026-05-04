@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { loadRuntimeConfig } from './lib/config.ts';
+import { syncApiClient } from './lib/personaApi.ts';
 
 // Load runtime configuration before rendering the app
 async function initializeApp() {
@@ -18,12 +19,14 @@ async function initializeApp() {
 
   try {
     await loadRuntimeConfig();
+    syncApiClient();
     console.log('Runtime configuration loaded successfully');
   } catch (error) {
     console.warn(
       'Failed to load runtime configuration, using defaults:',
       error
     );
+    syncApiClient();
   }
 
   // Render the app

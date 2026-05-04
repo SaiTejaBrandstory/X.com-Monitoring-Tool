@@ -50,28 +50,26 @@ export async function loadRuntimeConfig(): Promise<void> {
 
 // Get current configuration
 export function getConfig() {
-  // If config is still loading, return default config to avoid using stale Vite env vars
+  // Build-time API origin (Vercel / prod) — must win even while /api/config is still loading,
+  // otherwise the web-sdk falls back to same-origin "/" and /api/* hits the SPA shell (HTML 200).
+  const viteUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+  if (viteUrl) {
+    return { API_BASE_URL: viteUrl.replace(/\/+$/, '') };
+  }
+
   if (configLoading) {
     console.log('Config still loading, using default config');
     return defaultConfig;
   }
 
-  // First try runtime config (for Lambda)
   if (runtimeConfig) {
     console.log('Using runtime config');
-    return runtimeConfig;
-  }
-
-  // Then try Vite environment variables (for local development)
-  if (import.meta.env.VITE_API_BASE_URL) {
-    const viteConfig = {
-      API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
+    return {
+      ...runtimeConfig,
+      API_BASE_URL: String(runtimeConfig.API_BASE_URL || '').replace(/\/+$/, ''),
     };
-    console.log('Using Vite environment config');
-    return viteConfig;
   }
 
-  // Finally fall back to default
   console.log('Using default config');
   return defaultConfig;
 }

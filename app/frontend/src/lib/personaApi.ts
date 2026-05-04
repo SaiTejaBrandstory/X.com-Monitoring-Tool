@@ -4,8 +4,21 @@
  * Thin wrappers around metagptx web-sdk to keep components clean.
  */
 import { createClient } from '@metagptx/web-sdk';
+import { getAPIBaseURL } from '@/lib/config';
 
-export const client = createClient();
+export type PersonaApiClient = ReturnType<typeof createClient>;
+
+/** web-sdk defaults to baseURL "/" which on Vercel hits the SPA (HTML); always point at the real API. */
+export let client: PersonaApiClient = createClient({
+  baseURL: getAPIBaseURL().replace(/\/+$/, ''),
+});
+
+/** Call after `loadRuntimeConfig()` if the API URL comes from `/api/config` instead of `VITE_API_BASE_URL`. */
+export function syncApiClient(): void {
+  client = createClient({
+    baseURL: getAPIBaseURL().replace(/\/+$/, ''),
+  });
+}
 
 export type Platform = 'twitter' | 'linkedin';
 export type ViralityTrend = 'up' | 'down' | 'steady';

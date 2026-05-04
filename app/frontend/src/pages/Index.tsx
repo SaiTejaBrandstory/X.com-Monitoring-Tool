@@ -51,8 +51,16 @@ const Index = () => {
     const check = async () => {
       try {
         const resp = await client.auth.me();
-        if (resp?.data) {
-          setUser(resp.data as AuthedUser);
+        const d = resp?.data as unknown;
+        if (
+          d &&
+          typeof d === 'object' &&
+          !Array.isArray(d) &&
+          typeof (d as { id?: unknown }).id === 'string'
+        ) {
+          setUser(d as AuthedUser);
+        } else {
+          setUser(null);
         }
       } catch {
         setUser(null);
