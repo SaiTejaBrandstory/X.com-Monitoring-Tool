@@ -30,20 +30,49 @@ class DatabaseManager:
         self.async_session_maker = None
         self._init_lock = asyncio.Lock()  # Protect initialization process
         self._table_creation_lock = asyncio.Lock()  # Protect table creation process
+        self._asyncpg_connect_args: dict = {}
 
-    @staticmethod
-    def _sanitize_query_params(url):
-        """Remove query parameters that are incompatible with asyncpg.
+    def _prepare_postgresql_url_asyncpg(self, url):
+        """Strip libpq-style query keys; asyncpg does not accept ``sslmode`` as a kwarg.
 
-        Some providers (e.g. Neon) may inject parameters like ``channel_binding``
-        that are not supported by asyncpg and cause connection failures.
+        Neon URLs often include ``sslmode=require`` and ``channel_binding``; translate to
+        ``connect_args={\"ssl\": True}`` for SQLAlchemy + asyncpg.
         """
-        unsupported_params = {"channel_binding"}
-        found = unsupported_params & set(url.query)
-        if found:
-            logger.warning(f"Removed unsupported database URL query params: {sorted(found)}")
-            return url.set(query={k: v for k, v in url.query.items() if k not in unsupported_params})
-        return url
+        driver = (url.drivername or "").lower()
+        if "postgresql" not in driver and "postgres" not in driver:
+            return url
+
+        qp = dict(url.query)
+        sslmode = (qp.pop("sslmode", None) or "").strip().lower()
+        libpq_query_keys = frozenset(
+            {
+                "channel_binding",
+                "sslcert",
+                "sslkey",
+                "sslrootcert",
+                "sslcrl",
+                "application_name",
+            }
+        )
+        removed = [k for k in qp if k in libpq_query_keys]
+        for k in removed:
+            qp.pop(k, None)
+        if removed:
+            logger.warning("Removed PostgreSQL URL query params not supported by asyncpg: %s", sorted(removed))
+        connect_args = {}
+        if sslmode in ("require", "verify-ca", "verify-full", "prefer", "allow"):
+            connect_args["ssl"] = True
+            logger.info("Using TLS for Postgres (sslmode=%s -> asyncpg ssl=True)", sslmode or "default")
+        elif sslmode in ("disable",):
+            connect_args.pop("ssl", None)
+        else:
+            host = (url.host or "").lower()
+            if ".neon.tech" in host or host.endswith(".neon.build"):
+                connect_args["ssl"] = True
+                logger.info("Using TLS for Postgres (neon host -> asyncpg ssl=True)")
+
+        self._asyncpg_connect_args = connect_args
+        return url.set(query=qp)
 
     def _normalize_async_database_url(self, raw_url: str) -> str:
         """Ensure the database URL uses an async driver compatible with SQLAlchemy asyncio.
@@ -60,10 +89,11 @@ class DatabaseManager:
             return raw_url
 
         drivername = url.drivername or ""
+        self._asyncpg_connect_args = {}
 
-        # Sanitize query params that are incompatible with asyncpg
+        # Strip libpq query params (sslmode, channel_binding, …) before asyncpg
         if "postgresql" in drivername or "postgres" in drivername:
-            url = self._sanitize_query_params(url)
+            url = self._prepare_postgresql_url_asyncpg(url)
 
         # Already async drivers
         if "+aiosqlite" in drivername or "+asyncpg" in drivername or "+aiomysql" in drivername:
@@ -147,6 +177,12 @@ class DatabaseManager:
                 engine_kwargs["pool_recycle"] = 3600  # Connection recycle time (1 hour)
                 engine_kwargs["pool_timeout"] = 30  # Connection acquisition timeout (30 seconds)
                 logger.info("Using QueuePool with connection pooling for non-Lambda environment")
+
+            pg_connect_args = getattr(self, "_asyncpg_connect_args", None) or {}
+            if pg_connect_args:
+                existing = dict(engine_kwargs.get("connect_args") or {})
+                existing.update(pg_connect_args)
+                engine_kwargs["connect_args"] = existing
 
             self.engine = create_async_engine(database_url, **engine_kwargs)
             logger.info("Database engine created successfully")
