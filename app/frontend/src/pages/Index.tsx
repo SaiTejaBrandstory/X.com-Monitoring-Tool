@@ -26,6 +26,7 @@ import ProfileManager from '@/components/ProfileManager';
 import PersonaManager from '@/components/PersonaManager';
 import CostTracker from '@/components/CostTracker';
 import RewriteHistory from '@/components/RewriteHistory';
+import { appLogoUrl } from '@/lib/config';
 
 type Tab = 'feed' | 'profiles' | 'personas' | 'history' | 'costs';
 
@@ -65,7 +66,14 @@ const Index = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center gap-4">
+        <img
+          src={appLogoUrl}
+          alt=""
+          width={40}
+          height={40}
+          className="rounded-lg opacity-90"
+        />
         <div className="text-slate-400 text-sm">Loading PersonaRewire…</div>
       </div>
     );
@@ -82,6 +90,13 @@ const Index = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/80 to-slate-950" />
           <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-16">
+            <img
+              src={appLogoUrl}
+              alt=""
+              width={52}
+              height={52}
+              className="rounded-xl mb-5 ring-1 ring-white/10"
+            />
             <Badge className="bg-violet-500/20 text-violet-300 border-violet-500/40 mb-4">
               <Sparkles className="h-3 w-3 mr-1" /> AI Content Intelligence
             </Badge>
@@ -189,8 +204,8 @@ const Index = () => {
       <aside className="w-64 border-r border-slate-800 bg-slate-900/40 flex flex-col flex-shrink-0">
         <div className="p-6 border-b border-slate-800">
           <div className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
-              <Sparkles className="h-5 w-5 text-white" />
+            <div className="h-9 w-9 rounded-lg overflow-hidden shrink-0 ring-1 ring-white/10">
+              <img src={appLogoUrl} alt="" width={36} height={36} className="h-full w-full object-cover" />
             </div>
             <div>
               <div className="font-semibold leading-tight">PersonaRewire</div>

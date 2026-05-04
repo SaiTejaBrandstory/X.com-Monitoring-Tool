@@ -1,3 +1,6 @@
+/** Nav / loading mark (`public/x-logo.png`). Matches `index.html` favicon (not tied to polluted env vars). */
+export const appLogoUrl = '/x-logo.png';
+
 // Runtime configuration
 let runtimeConfig: {
   API_BASE_URL: string;

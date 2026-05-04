@@ -17,11 +17,48 @@ function escapeHtmlAttr(str: string): string {
     .replace(/'/g, '&#39;');
 }
 
-process.env.VITE_APP_TITLE ??= process.env.OVERVIEW_TITLE ?? 'shadcnui';
-process.env.VITE_APP_DESCRIPTION ??= process.env.OVERVIEW_DESCRIPTION ?? 'Atoms Generated Project';
+/** Default SEO / social meta for this app (override with VITE_* in .env). */
+const SITE_TITLE_DEFAULT = 'X.com Monitoring Tool';
+const SITE_DESCRIPTION_DEFAULT =
+  'Monitor X (Twitter) creators by category, browse a live feed with virality signals, optionally rewrite in your brand voice, and track AI costs.';
+const PREVIOUS_DEFAULT_TITLE = 'personarewire';
+const PREVIOUS_DEFAULT_DESC =
+  'discover viral posts from creators you monitor on x and linkedin, rewrite them in your brand voice, and track ai costs transparently.';
+function normalizeSiteMetaEnv() {
+  let title = process.env.VITE_APP_TITLE?.trim();
+  let desc = process.env.VITE_APP_DESCRIPTION?.trim();
+  if (!title) title = SITE_TITLE_DEFAULT;
+  if (!desc) desc = SITE_DESCRIPTION_DEFAULT;
+  const tNorm = title.toLowerCase();
+  const dNorm = desc.toLowerCase();
+  const titleIsTemplate =
+    tNorm === 'shadcnui' ||
+    tNorm === 'atoms' ||
+    tNorm === PREVIOUS_DEFAULT_TITLE ||
+    /atoms\s+generated/.test(tNorm) ||
+    /x\.com_?content/i.test(title.replace(/\s+/g, ''));
+  const descIsTemplate =
+    dNorm === 'atoms generated project.' ||
+    dNorm === 'atoms generated project' ||
+    /^shadcnui$/.test(dNorm) ||
+    /x\.com_?content/i.test(desc.replace(/\s+/g, '')) ||
+    dNorm === PREVIOUS_DEFAULT_DESC;
+  process.env.VITE_APP_TITLE = titleIsTemplate ? SITE_TITLE_DEFAULT : title;
+  process.env.VITE_APP_DESCRIPTION = descIsTemplate ? SITE_DESCRIPTION_DEFAULT : desc;
+}
+normalizeSiteMetaEnv();
 process.env.VITE_APP_TITLE = escapeHtmlAttr(process.env.VITE_APP_TITLE);
 process.env.VITE_APP_DESCRIPTION = escapeHtmlAttr(process.env.VITE_APP_DESCRIPTION);
-process.env.VITE_APP_LOGO_URL ??= process.env.OVERVIEW_LOGO_URL ?? 'https://public-frontend-cos.metadl.com/mgx/img/favicon_atoms.ico';
+const DEFAULT_APP_LOGO = '/x-logo.png';
+process.env.VITE_APP_LOGO_URL ??= DEFAULT_APP_LOGO;
+// Cursor / MetaGPT often export VITE_APP_LOGO_URL or template URLs pointing at Atoms favicons.
+if (
+  /metadl\.com|favicon_atoms|atoms\.template|img\/favicon_atoms/i.test(
+    process.env.VITE_APP_LOGO_URL || ''
+  )
+) {
+  process.env.VITE_APP_LOGO_URL = DEFAULT_APP_LOGO;
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {

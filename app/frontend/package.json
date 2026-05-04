@@ -1,5 +1,5 @@
 {
-  "name": "shadcnui",
+  "name": "persona-rewire-frontend",
   "type": "module",
   "scripts": {
     "dev": "vite",
